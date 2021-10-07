@@ -6,6 +6,7 @@ const validate = require('../../tools/validate')
 
 router.get('/', async(req,res,next)=>{
     try{
+        console.log('in get from back')
         const dogsToShow=[]; // array for dogs to show in front
         const {name} = req.query; // take name from query  
 
@@ -57,19 +58,23 @@ router.get('/', async(req,res,next)=>{
 
 router.get('/:id', async(req,res,next)=>{
     try{
+        console.log('in get by id from the back')
         const {id}=req.params;
+        console.log(typeof nId)
         // Si id es un numero busco en los locales, si no error
-        if(typeof id === 'number'){
-            const dbDog = await Dog.findByPk(id,{
-                include: Temperament
-            });
-            if(dbDog) return res.json(dbSend(dbDog));
+        if(typeof parseInt(id) === 'number'){
+            console.log('inside of typeof')
+            // const dbDog = await Dog.findByPk(id,{
+            //     include: Temperament
+            // });
+            // if(dbDog) return res.json(dbSend(dbDog));
+            
             const apiDoggys = await axios.get('https://api.thedogapi.com/v1/breeds');
             const doggys = apiDoggys.data;
-            const doggy = doggys.filter(elem=>{
-                elem.id === id;
-            })
-            return doggy?res.json(apiSend(doggy)):res.status(404).json({error: 'We dont have any doggy with that id :c'});
+            const doggy = doggys.filter(elem => {
+                return elem.id == id;
+            });
+            return doggy.length?res.json(apiSend(doggy[0])):res.status(404).json({error: 'We dont have any doggy with that id :c'});
         }
     }catch(e){
         next(e)

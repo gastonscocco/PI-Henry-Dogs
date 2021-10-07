@@ -21,10 +21,11 @@ function dbSend(target){
 }
 
 function apiSend(elem){
+    console.log(elem.weight.metric)
     return {
         id: elem.id,
         name: elem.name,
-        height: elem.height.metric,
+        height: elem.weight.metric,
         weight: elem.weight.metric,
         lifeSpan: elem.life_span,
         img: elem.image.url,
