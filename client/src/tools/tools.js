@@ -166,7 +166,7 @@ export function bodyFormater(inputs, target, dispatch, actions){
         height: height.join(' - '),
         weight: weight.join(' - ')
     };
-    if (img) body.img = img;
+    if (img) {body.img = img}else if(!img){body.img = 'https://cdn.discordapp.com/attachments/890950417737998397/895887865567920129/Dognut.png'};
     if(lifeSpan.length) body.lifeSpan = `${lifeSpan.join(' - ')} years` ;
     if(selectedTemps.length) body.temperaments = selectedTemps;
     //if(!id)body.id=Math.ceil(Math.random()*100000)

@@ -46,7 +46,8 @@ export function getTemperaments(){
 
 export function getDoggys(name){
         let path = name?`${doggyApi}?name=${name}`:doggyApi;
-
+        console.log('NAME => '+name)
+        console.log('PATH => '+path)
         return(async()=>{
             let doggys = await axiosCall(path);
             if(doggys.status===404){

@@ -6,29 +6,36 @@ const validate = require('../../tools/validate')
 
 router.get('/', async(req,res,next)=>{
     try{
-        const dogsToShow=[]; // array for dogs to show in front
-        const {name} = req.query; // take name from query  
-
         // get doggys from external API
         const response = await axios.get('https://api.thedogapi.com/v1/breeds');
         const doggys = response.data;
-
         // get temperaments from local db
         const localDoggys = await Dog.findAll({ // dogs creates by users
-            include:Temperament
+            include: Temperament
         });
+
+        const dogsToShow=[]; // array for dogs to show in front
+        const {name} = req.query; // take name from query  
 
 //  -----------Start Query -------------------
 
         if(name){  // si tengo name en query hacer..
-            if(localDoggys){  // si tengo doggys locales
-                dogsToShow.push(dbSend(localDoggys.find(elem=>elem.name.toLowerCase()===name.toLowerCase())))
-            }
+            
             doggys.forEach(elem=>{   
                 if(elem.name.toLowerCase().includes(name.toLowerCase())){  // compara el nombre del query con el array de la api
                     dogsToShow.push(apiSend(elem));  // lo envia con una funcion externa
                 }
             });
+            
+
+            if(localDoggys){
+
+                for(const doggy of localDoggys){
+                    if(doggy.dataValues.name.toLowerCase().includes(name.toLowerCase())){
+                        dogsToShow.push(dbSend(doggy.dataValues))
+                    }
+                }
+            }
             
             return dogsToShow.length?res.json(dogsToShow):res.status(404).json({error: 'Whe dont have that doggy :c'})
         }
@@ -98,6 +105,13 @@ router.post('/', validate, async (req,res,next)=>{
         if(temperaments){
             // Temperaments from database where temperaments are from local temperaments
             const lcTemp = temperaments.map(elem=>elem.toLowerCase());
+            for(const temp of lcTemp){
+                await Temperament.findOrCreate({
+                    where: {
+                        name: temp
+                    }
+                })
+            }
             const idTempdb = await Temperament.findAll({
                 where:{
                     name: lcTemp
@@ -106,16 +120,16 @@ router.post('/', validate, async (req,res,next)=>{
             // id local to id temp 
             const idTemp=[];
             idTempdb.forEach(elem=>{
-                idTemp.push(elem.id)
+                idTemp.push(elem.dataValues.id)
             });
             // set temperaments to created doggy
             await doggy.setTemperaments(idTemp);
             // find the created doggy on db
-            const response = await Dog.findByPk(doggy.id, {
+            const response = await Dog.findByPk(doggy.dataValues.id, {
                 include: Temperament
             });
             // return the created doggy with the format of dbSend
-            return res.status(201).json(dbSend(response));
+            return res.status(201).json(dbSend(response.dataValues));
         }
         if(!doggy) return res.status(404).json({error : 'We cant create your dog :c'});
         res.status(201).json(dbSend(doggy));
