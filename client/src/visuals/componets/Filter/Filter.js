@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setFilter, setFiltered } from '../../../controlers/actions';
-import {doggysFiltered,doggyTemps} from '../../../tools/tools'
+import {doggysFiltered,doggyTemps} from '../../../tools/Tools'
 
 function Filter({doggys, filter}){
     const dispatch = useDispatch();

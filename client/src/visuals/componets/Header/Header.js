@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../Nav/index';
+import Nav from '../Nav/Nav';
 
 
 function Header({user}) {

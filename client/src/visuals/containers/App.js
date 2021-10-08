@@ -8,6 +8,7 @@ import Landing from '../componets/Landing';
 import Header from '../componets/Header/Header'
 import { useDispatch } from 'react-redux';
 import {userState} from '../../controlers/actions'
+import Failed from './pages/Failed/Failed';
 
 
 
@@ -46,6 +47,9 @@ function App() {
                 </Route>
                 <Route path='/detailed'>
                     {window.localStorage.login?<Detailed/>:<Redirect to='/'/>}
+                </Route>
+                <Route exact path='/404'>
+                    {window.localStorage.login?<Failed/>:<Redirect to='/'/>}
                 </Route>
             </Switch>
         </div>

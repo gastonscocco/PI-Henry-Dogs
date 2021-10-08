@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
     lifeSpan:{
       type: DataTypes.STRING
     },
-    image:{
+    img:{
       type: DataTypes.STRING
     }
   },{

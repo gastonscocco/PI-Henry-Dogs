@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const {Temperament} = require('../db');
-const {sendTemp} = require('../../tools/sendTemps');
+const {sendTemps} = require('../../tools/toSend')
 
 router.get('/', async (req,res,next)=>{
     try{
         const listTemp = await Temperament.findAll();
         const listToSend = [];
-        listTemp.forEach(elem=>{
-            listToSend.push(sendTemp(elem.name))
+        listTemp.forEach((elem,index)=>{
+            listToSend.push(sendTemps(elem))
         })
         res.json(listToSend);
     }catch(e){

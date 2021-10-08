@@ -4,7 +4,7 @@ import Dog from '../Dog/Dog';
 import Pag from '../Pag/Pag';
 import Order from '../Order/Order';
 import Filter from '../Filter/Filter';
-import {setDoggys} from '../../../controlers/actions'
+import {setDoggys, setTemps} from '../../../controlers/actions'
 import Search from '../Search/Search';
 
 function Doggys() {
@@ -24,6 +24,7 @@ function Doggys() {
     
     useEffect(()=>{
         if(!doggys.length){
+            dispatch(setTemps())
             dispatch(setDoggys(undefined, order))
         }
     },[])
@@ -41,16 +42,15 @@ function Doggys() {
                 <Search/>
                 {showOrder && <Order doggys={doggys} isFilter={isFilter} order={order}/>}
                 {showFilter && <Filter doggys={doggys} filter={filter}/>}
+                {((!numOfFilterPages&&numOfPages>1) || numOfFilterPages>1) 
+                && <Pag pag={pag} pages={numOfFilterPages || numOfPages}/>
+                /*default pag = 1 , this code show pag selected or filter pag selected*/ }
             </div>
             <div>
                 {showPage(doggys, pag, isFilter).map((doggy,index)=>{
                     return <Dog doggy={doggy} key={index}/>
                 })}
                 </div>
-                doggys cargan
-                {((!numOfFilterPages&&numOfPages>1) || numOfFilterPages>1) 
-                && <Pag pag={pag} pages={numOfFilterPages || numOfPages}/>
-                /*default pag = 1 , this code show pag selected or filter pag selected*/ }
         </div>
     )
 }

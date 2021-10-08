@@ -21,7 +21,6 @@ function dbSend(target){
 }
 
 function apiSend(elem){
-    console.log(elem.weight.metric)
     return {
         id: elem.id,
         name: elem.name,
@@ -33,7 +32,15 @@ function apiSend(elem){
     }
 };
 
+function sendTemps(elem){
+    return {
+        id:elem.id,
+        temperament: elem.name
+    }
+}
+
 module.exports = {
     dbSend,
-    apiSend
+    apiSend,
+    sendTemps
 }

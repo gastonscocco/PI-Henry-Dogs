@@ -6,7 +6,6 @@ const validate = require('../../tools/validate')
 
 router.get('/', async(req,res,next)=>{
     try{
-        console.log('in get from back')
         const dogsToShow=[]; // array for dogs to show in front
         const {name} = req.query; // take name from query  
 
@@ -19,20 +18,18 @@ router.get('/', async(req,res,next)=>{
             include:Temperament
         });
 
-//  -----------Start Query ------------------
+//  -----------Start Query -------------------
 
         if(name){  // si tengo name en query hacer..
+            if(localDoggys){  // si tengo doggys locales
+                dogsToShow.push(dbSend(localDoggys.find(elem=>elem.name.toLowerCase()===name.toLowerCase())))
+            }
             doggys.forEach(elem=>{   
                 if(elem.name.toLowerCase().includes(name.toLowerCase())){  // compara el nombre del query con el array de la api
                     dogsToShow.push(apiSend(elem));  // lo envia con una funcion externa
                 }
             });
-            if(localDoggys){  // si tengo doggys locales
-                localDoggys.forEach(elem=>{
-                    if(elem.name.toLowerCase().includes(name.toLowerCase())); // comparo query with local
-                    dogsToShow.push(dbSend(elem));
-                })
-            }
+            
             return dogsToShow.length?res.json(dogsToShow):res.status(404).json({error: 'Whe dont have that doggy :c'})
         }
         // if(dogsToShow.length){return res.json(dogsToShow)}
@@ -58,23 +55,21 @@ router.get('/', async(req,res,next)=>{
 
 router.get('/:id', async(req,res,next)=>{
     try{
-        console.log('in get by id from the back')
         const {id}=req.params;
-        console.log(typeof nId)
         // Si id es un numero busco en los locales, si no error
-        if(typeof parseInt(id) === 'number'){
-            console.log('inside of typeof')
-            // const dbDog = await Dog.findByPk(id,{
-            //     include: Temperament
-            // });
-            // if(dbDog) return res.json(dbSend(dbDog));
-            
+
+        if(id.length<10 && typeof parseInt(id) === 'number'){
             const apiDoggys = await axios.get('https://api.thedogapi.com/v1/breeds');
             const doggys = apiDoggys.data;
             const doggy = doggys.filter(elem => {
                 return elem.id == id;
             });
             return doggy.length?res.json(apiSend(doggy[0])):res.status(404).json({error: 'We dont have any doggy with that id :c'});
+        }else{
+                const dbDog = await Dog.findByPk(id,{
+                    include: Temperament
+                });
+                if(dbDog) return res.json(dbSend(dbDog));
         }
     }catch(e){
         next(e)
@@ -89,16 +84,15 @@ Crea una raza de perro en la base de datos
 */
 router.post('/', validate, async (req,res,next)=>{
     try{
-        const {name, height, weight, lifeSpan, img, temperaments } = req.body;
+        const {name, height, weight, lifeSpan, img, temperaments} = req.body;
         const response = axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`);
         const newDoggy = response.data;
 
         if(newDoggy && newDoggy.some(elem=>elem.name.toLowerCase()===name.toLowerCase())){
             return res.status(404).json({error: 'That doggy is aready exists' });
         }
-
         const doggy = await Dog.create({
-            name, height, weight, lifeSpan, img
+            name, height, weight, lifeSpan, img, 
         })
 
         if(temperaments){

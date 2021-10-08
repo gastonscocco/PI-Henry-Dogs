@@ -1,5 +1,4 @@
 module.exports = function validate(req, res, next){
-    
     const {name, height, weight, lifeSpan, img, temperaments}=req.body;
     // Name, Weight, Height son obligatorios y deben ser string
     if(typeof name !== 'string' || typeof height !== 'string' || typeof weight !== 'string'){
@@ -17,6 +16,5 @@ module.exports = function validate(req, res, next){
     if(req.body.hasOwnProperty('temperaments') && !Array.isArray(temperaments)){
         throw new Error ('temperaments need be an Array')
     }
-
     next();
 }

@@ -21,6 +21,19 @@ export const CLEANDOGGYS = 'CLEANDOGGYS';
 export const SETDOGGY = 'SETDOGGY';
 export const CLEANSEARCH = 'CLEANSEARCH';
 export const SETTEMPS = 'SETTEMPS';
+export const SETNAME = 'SETNAME';
+export const SETIMG = 'SETIMG';
+export const SETHEIGHT = 'SETHEIGHT';
+export const SETWEIGHT = 'SETWEIGHT';
+export const SETLIFESPAN = 'SETLIFESPAN';
+export const SETERROR = 'SETERROR';
+export const DOGGYUPDATE = 'DOGGYUPDATE';
+export const UPDATEISFILTER = 'UPDATEISFILTER';
+export const CLEANNEW = 'CLEANNEW';
+export const SETSELECTTEMPS = 'SETSELECTTEMPS';
+export const SETBODY = 'SETBODY';
+export const CLEANFIELDS = 'CLEANFIELDS';
+export const CREATEDOGGY = 'CREATEDOGGY';
 
 
 export function userState(payload){
@@ -81,8 +94,6 @@ export function orderDoggys(doggys, order){
                 b[category][0] - a[category][0]
         });
     }
-    // console.log('From Orderer Doggys')
-    // console.log(doggys)
     return {
         type:ORDERDOGGYS,
         payload: doggys
@@ -94,8 +105,6 @@ export function setDoggys(name, order){
         try{
             const doggys=await getDoggys(name);
             const action = orderDoggys(doggys, order);
-            // console.log('getdoggys ready')
-            // console.log('setDoggys + '+ action.payload)
             dispatch({
                 type:SETDOGGYS,
                 payload: action.payload
@@ -175,6 +184,114 @@ export function setTemps(){
                 type : SETTEMPS,
                 payload: temps
             })
+        }catch(e){
+            console.log(e)
+        }
+    }
+}
+
+export function setName(payload){
+    return {
+        type: SETNAME,
+        payload
+    }
+}
+
+export function setImg(payload){
+    return {
+        type:SETIMG,
+        payload
+    }
+}
+
+export function setHeight(payload){
+    return {
+        type:SETHEIGHT,
+        payload
+    }
+}
+
+export function setWeight(payload){
+    return {
+        type: SETWEIGHT,
+        payload
+    }
+}
+
+export function setLifeSpan(payload){
+    return {
+        type: SETLIFESPAN,
+        payload
+    }
+}
+
+export function setError(payload){
+    return {
+        type: SETERROR,
+        payload
+    }
+}
+
+export function doggyUpdate(doggys, newDoggy, order){
+    if(!newDoggy.img) newDoggy.img = 'https://th.bing.com/th/id/OIP.fCU007uz0Wb9DWpqXh7QUQAAAA?pid=ImgDet&rs=1';
+    doggys.push(newDoggy);
+    const action = orderDoggys(doggys, order)
+    return {
+        type: DOGGYUPDATE,
+        payload: action.payload
+    }
+}
+
+export function updateIsFilter(payload){
+    return {
+        type: UPDATEISFILTER,
+        payload
+    }
+}
+
+export function cleanNew(){
+    return {
+        type: CLEANNEW
+    }
+}
+
+export function setSelectTemps(payload){
+    return {
+        type: SETSELECTTEMPS,
+        payload
+    }
+}
+
+export function setBody(payload){
+    return {
+        type: SETBODY,
+        payload
+    }
+}
+
+export function cleanFields(){
+    return {
+        type: CLEANFIELDS
+    }
+}
+
+export function createDoggy(body){
+    return async dispatch=>{
+        try{
+            const response = await postDoggy(body);
+            if(response.name===body.name){
+                dispatch({
+                    type: CREATEDOGGY,
+                    payload: response
+                })
+            }else{
+                dispatch({
+                    type: SETERROR,
+                    payload: {
+                        message: 'That breed already exists '
+                    }
+                })
+            }
         }catch(e){
             console.log(e)
         }

@@ -1,8 +1,15 @@
 
-import { CHANGEFILTER, CHANGEORDER, CLEANDOGGYS, CLEANSEARCH, 
-    LOGGED, ORDERBY, ORDERDOGGYS, ORDERFILTERED, SEARCHDOGGYS, SELECTPAG, 
-    SETDOGGY, 
-        SETDOGGYS, SETFILTER, SETFILTERED, SETORDER, SETTEMPS, USERSTATE, } from './actions';
+import { 
+        CHANGEFILTER, CHANGEORDER, CLEANDOGGYS, CLEANFIELDS, CLEANNEW, CLEANSEARCH, 
+        CREATEDOGGY, 
+        DOGGYUPDATE, 
+        EMPTYNEWDOGGY, 
+        LOGGED, ORDERBY, ORDERDOGGYS, ORDERFILTERED, SEARCHDOGGYS, 
+        SELECTPAG,SETBODY,SETDOGGY, SETDOGGYS, SETERROR, SETFILTER, SETFILTERED, 
+        SETHEIGHT, SETIMG, SETLIFESPAN, SETNAME, SETORDER, 
+        SETSELECTTEMPS, 
+        SETTEMPS, SETWEIGHT, UPDATEISFILTER, USERSTATE, 
+    } from './actions';
 
 
 const initialState={
@@ -18,9 +25,11 @@ const initialState={
     showOrder:false,
     order: ['name', 'asc'],
     takeTemperaments:[],
-    breed:'', height:['',''], weight:['',''], lifeSpan:['',''],
-    img:'', selectedTemperaments:[],
-    newDoggy:{}
+    name:'', height:['',''], weight:['',''], lifeSpan:['',''],
+    img:'', selectedTemps:[],
+    newDoggy:{},
+    body:{},
+    error:{error:0}
 }
 
 function reducer(state=initialState, {type, payload}){
@@ -87,9 +96,71 @@ function reducer(state=initialState, {type, payload}){
         case SETTEMPS:
             return {...state, takeTemperaments: payload}
 
+        case SETNAME:
+            return {...state, name: payload}
+
+        case SETIMG:
+            return {...state, img: payload}
+
+        case SETHEIGHT:
+            return {...state, height: payload}
+
+        case SETWEIGHT:
+            return {...state, weight: payload}
+
+        case SETLIFESPAN:
+            return {...state, lifeSpan: payload}
+
+        case SETERROR:
+            return {...state, error: payload}
+
+        case DOGGYUPDATE:
+            return {...state, doggys: payload}
+
+        case UPDATEISFILTER:
+            return {...state, isFilter: payload}
+
+        case SETSELECTTEMPS:
+            return {...state, selectedTemps: payload}
+
+        case SETBODY:
+            return {...state, body: payload}
+
+        case CLEANFIELDS:
+            return {
+                ...state,
+                name:'',
+                height:['',''],
+                weight:['',''],
+                lifeSpan:['',''],
+                selectedTemps:[],
+                img:'',
+                body:{},
+                error:{error:0}
+            }
+
+        case CREATEDOGGY:
+            return {
+                ...state,
+                newDoggy: payload,
+                name:'',
+                height:['',''],
+                weight:['',''],
+                lifeSpan:['',''],
+                selectedTemps:[],
+                takeTemperaments:[],
+                img:'',
+                body:{},
+                error:{error:0}
+            }
+
+        case CLEANNEW:
+            return {...state, newDoggy:{}}
+
         default:
             return state
     }
 }
 
 export default reducer;
+

@@ -5,7 +5,6 @@ function Home({location}) {
     return (
         <section>
             <Doggys location={location}/>
-            home
         </section>
     )
 }

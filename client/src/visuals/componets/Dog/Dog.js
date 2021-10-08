@@ -11,8 +11,7 @@ function Dog({doggy}) {
     const {id, name, img, temperament} = doggy;
     const dispatch = useDispatch();
     const history = useHistory();
-
-    const handleClick= e=>{
+    const handleClick= ()=>{
         if(name === 'without data :c')return;
         history.push('/detailed')
         dispatch(setDoggy(id))
