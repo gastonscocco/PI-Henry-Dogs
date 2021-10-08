@@ -91,8 +91,13 @@ export function bodyFormater(inputs, target, dispatch, actions){
     const { height, weight, lifeSpan, img } = inputs;
     const {setName, setHeight, setWeight, setLifeSpan, setSelectTemps, setImg} = actions;
 
-    let nameDoggy = inputs.nameDoggy;
+    let nameDoggyMin = inputs.nameDoggy
     let selectedTemps = inputs.selectedTemps;
+    let nameDoggy
+
+    if(nameDoggyMin){
+        nameDoggy = nameDoggyMin[0].toUpperCase()+nameDoggyMin.slice(1)
+    }
 
     const value = target.value;
     const name = target.name;
