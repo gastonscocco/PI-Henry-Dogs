@@ -1,9 +1,13 @@
 .img{
-    width: 400px;
-    height: 300px;
+    border-radius: 5vh;
+    width: 50vh;
+    object-fit: contain;
 }
-
-.detailed{
-    width: 800px;
-    height: 600px;
+.imgDetailedDiv{
+    height: 78vh;
+}
+.ImgDetailed{
+    width: 90vh;
+    position: relative;
+    top: 6vh;
 }

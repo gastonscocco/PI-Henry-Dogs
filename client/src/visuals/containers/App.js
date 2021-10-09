@@ -4,11 +4,12 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import NewDoggy from './pages/NewDoggy/NewDoggy';
 import Home from './pages/Home/Home';
 import Detailed from './pages/Detailed/Detailed';
-import Landing from '../componets/Landing';
+import Landing from '../componets/Landing/Landing';
 import Header from '../componets/Header/Header'
 import { useDispatch } from 'react-redux';
 import {userState} from '../../controlers/actions'
 import Failed from './pages/Failed/Failed';
+import Footer from '../componets/Footer/Footer';
 
 
 
@@ -31,7 +32,7 @@ function App() {
 
     return (
         <div>
-                {!window.localStorage.login && <h1>Doggy Pedia</h1>}
+                {/* {!window.localStorage.login && <h1>Doggy Pedia</h1>} */}
                 <Route path='/'>
                     {window.localStorage.login?<Header user={Logout}/>:<Landing user={Joined}/>}
                 </Route>
@@ -52,6 +53,7 @@ function App() {
                     {window.localStorage.login?<Failed/>:<Redirect to='/'/>}
                 </Route>
             </Switch>
+                {window.localStorage.login && <Footer/>}
         </div>
     )
 }

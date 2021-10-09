@@ -1,0 +1,25 @@
+.SearchBtns{
+    margin-top: 3vh;
+    width: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.SBtn{
+    color: #c9546091;
+    background-color: #f0d16a91;
+    border: 0px;
+    padding: 1vh;
+    font-weight: bold;
+    border-radius: 2vh;
+    transition: 0.8s;
+}
+.SBtn:hover{
+    color: #c95460;
+    background-color: #f0d16a;
+    cursor: pointer;
+    position: relative;
+    top:-2px;
+    left: -2px;
+    box-shadow: 1px 1px 3px gray;
+}

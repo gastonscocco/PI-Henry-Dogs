@@ -1,0 +1,17 @@
+.DogCard{
+    width: 60vh;
+    height: 70vh;
+    margin: 20px 30vh 10vh 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6vh;
+    background-color: #f0d16a94;
+}
+.DoggyImg{
+    width: 50vh;
+    height: 40vh;
+    overflow: hidden;
+    border-radius: 5vh;
+}

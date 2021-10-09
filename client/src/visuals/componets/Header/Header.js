@@ -1,12 +1,11 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
-
+import './Header.css'
 
 function Header({user}) {
 
     return (
-        <div>
-            <h1>Doggy Pedia</h1>
+        <div className='Header'>
             <Nav user={user}/>
         </div>
     )

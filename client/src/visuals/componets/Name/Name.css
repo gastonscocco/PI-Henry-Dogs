@@ -1,0 +1,16 @@
+.Name{
+    color: #c95460;
+    position: relative;
+    top: -3vh;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.NameDetailed{
+    color: #f0d16a;
+    text-shadow: 0.3vh 0.3vh 0.4vh #c95460;
+    font-weight: bold;
+    font-size: xx-large;
+    position: relative;
+    top: -8vh;
+}

@@ -1,0 +1,22 @@
+.PrimaryDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.Btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 60vh;
+    position: fixed;
+    left: 10vh;
+}
+.Doggys{
+    margin-top: -3vh;
+    margin-left: 75vh;
+    display: grid;
+    grid-template-areas: "a a";
+    gap: 0px;
+    grid-auto-columns: 70vh;
+}

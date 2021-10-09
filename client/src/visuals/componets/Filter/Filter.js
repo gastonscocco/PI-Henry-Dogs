@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setFilter, setFiltered } from '../../../controlers/actions';
 import {doggysFiltered,doggyTemps} from '../../../tools/Tools'
+import './Filter.css'
+
 
 function Filter({doggys, filter}){
     const dispatch = useDispatch();
@@ -12,7 +14,7 @@ function Filter({doggys, filter}){
     }
 
     return (
-        <div>
+        <div className='FilterDiv'>
             <span>Show by temperament</span>
             <select value={filter}
                     onChange={handleChange}

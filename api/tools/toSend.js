@@ -24,7 +24,7 @@ function apiSend(elem){
     return {
         id: elem.id,
         name: elem.name,
-        height: elem.weight.metric,
+        height: elem.height.metric,
         weight: elem.weight.metric,
         lifeSpan: elem.life_span,
         img: elem.image.url,

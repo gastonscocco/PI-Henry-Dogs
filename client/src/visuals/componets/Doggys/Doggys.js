@@ -6,6 +6,7 @@ import Order from '../Order/Order';
 import Filter from '../Filter/Filter';
 import {setDoggys, setTemps} from '../../../controlers/actions'
 import Search from '../Search/Search';
+import './Doggys.css'
 
 function Doggys() {
 
@@ -32,13 +33,12 @@ function Doggys() {
     const showPage = (doggys, pag, isFilter)=>{
         const init=(pag-1)*9;
         const end=pag*9;
-
         return isFilter.length?isFilter.slice(init, end):doggys.slice(init, end)
     }
 
     return (
-        <div>
-            <div>
+        <div className='PrimaryDiv'>
+            <div className='Btns'>
                 <Search/>
                 {showOrder && <Order doggys={doggys} isFilter={isFilter} order={order}/>}
                 {showFilter && <Filter doggys={doggys} filter={filter}/>}
@@ -46,7 +46,7 @@ function Doggys() {
                 && <Pag pag={pag} pages={numOfFilterPages || numOfPages}/>
                 /*default pag = 1 , this code show pag selected or filter pag selected*/ }
             </div>
-            <div>
+            <div className='Doggys'>
                 {showPage(doggys, pag, isFilter).map((doggy,index)=>{
                     return <Dog doggy={doggy} key={index}/>
                 })}

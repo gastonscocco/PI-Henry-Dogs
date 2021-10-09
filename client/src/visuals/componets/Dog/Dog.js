@@ -5,6 +5,7 @@ import Temperaments from '../Temperaments/Temperaments';
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {setDoggy} from '../../../controlers/actions'
+import './Dog.css'
 
 
 function Dog({doggy}) {
@@ -18,14 +19,19 @@ function Dog({doggy}) {
     }
 
     return (
-        <div id={`doggy-${id}`} onClick={handleClick}>
+        <div    id={`doggy-${id}`} 
+                onClick={handleClick}
+                className='DogCard'
+            >
             <Name   name={name} 
                     id={id}
                 />
-            <Img    src={img} 
-                    id={id} 
-                    alt={name}
-                />
+            <div className='DoggyImg'>
+                <Img    src={img} 
+                        id={id} 
+                        alt={name}
+                    />
+            </div>
             <Temperaments temperament={temperament} id={id}/>
         </div>
     )

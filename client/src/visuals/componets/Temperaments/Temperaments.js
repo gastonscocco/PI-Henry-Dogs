@@ -1,12 +1,15 @@
 import React from 'react'
+import './Temperaments.css'
 
 function Temperaments({id, temperament, detailed}) {
 
-    const tempClass = detailed?'detailed':'temps';
+    const tempClass = detailed?'detailedTemp':'temps';
 
     return (
-        <div id={`temp-${id}`} className={tempClass}>
-            <span id={`tempSpan-${id}`}>Temperaments: </span>
+        <div id={`temp-${id}`} className='temps'>
+            <span   id={`tempSpan-${id}`}
+                    className={tempClass}
+                >Temperament: </span>
             {temperament?
                 temperament.toLowerCase()
                     :

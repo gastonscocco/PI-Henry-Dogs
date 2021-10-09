@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchDoggys, setDoggys, cleanSearch } from '../../../controlers/actions';
 import SearchBtn from '../SearchBtn/SearchBtn';
+import './Search.css'
+
 
 function Search() {
     const search = useSelector(state=>state.search);
@@ -32,15 +34,7 @@ function Search() {
     }
 
     return (
-        <div>
-            {/* <label htmlFor='search'>Search by Breed </label>
-            <input  id='search'
-                    type='text'
-                    onChange={handleChange}
-                    onKeyDown={handleKey}
-                    value={search}
-                /> */}
-
+        <div className='SearchDiv'>
             <label htmlFor="search"> Search by Breed </label>
             <input  type="text" 
                     list="Breeds" 
@@ -50,7 +44,7 @@ function Search() {
                     onKeyDown={handleKey}
                     value={doggySearch}
                 />
-                <datalist id="Breeds">
+                <datalist id="Breeds" className='searchBar'>
                     {doggys.map((elem,index)=>{
                             return <option value={elem.name} key={index}/>
                         })}
@@ -62,3 +56,11 @@ function Search() {
 }
 
 export default Search
+
+/* <label htmlFor='search'>Search by Breed </label>
+        <input  id='search'
+        type='text'
+        onChange={handleChange}
+        onKeyDown={handleKey}
+        value={search}
+    /> */

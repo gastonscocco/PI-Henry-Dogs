@@ -1,0 +1,21 @@
+.InfoDiv{
+    display: flex;
+    flex-direction: column;
+    color: #c95460;
+    position: relative;
+    left: -16vh;
+    font-weight: bold;
+    text-shadow: 0.3vh 0.3vh 0.4vh #f0d16a;
+}
+.InfoDiv span{
+    font-weight: 400;
+    position: relative;
+    right: -5vh;
+    margin-bottom: 2vh;
+    text-shadow: 0.3vh 0.3vh 0.4vh transparent;
+}
+
+.rowDiv{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,4 +1,6 @@
 import React from 'react'
+import './Failed.css'
+import { FiHome } from "react-icons/fi";
 
 function Failed() {
     const failed='https://cdn.discordapp.com/attachments/890950417737998397/895698117440200714/Doggy_5.png'
@@ -11,9 +13,11 @@ function Failed() {
     }
 
     return (
-        <div>
+        <div className='Failed'>
             <img src={failed} alt='404'/>
-            <button onClick={goHome}>Home</button>
+            <button onClick={goHome}
+                    className='FailBtn'
+                ><FiHome/></button>
         </div>
     )
 }

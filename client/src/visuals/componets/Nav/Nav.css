@@ -1,0 +1,63 @@
+.NavPrimary{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 20px;
+    height: 15vh;
+}
+.NavLogo{
+    background-color: #f0d16a81;
+    border-radius: 999px;
+    margin: 5px 0px;
+    width: 20vh;
+    padding-left: 5vh;
+    height: 12vh;
+    align-items: center;
+    justify-content: center;
+    
+}
+.LogoImg{
+    position: relative;
+    top: -18px;
+    left: -10px;
+    transition: 1s;
+}.LogoImg:hover{
+    cursor: pointer;
+    top:-8px;
+}
+.NavRoutes {
+    background-color: #f0d16a81;
+    border-radius: 5vh;
+    display: flex;
+    color: #c95460;
+    align-items: center;
+    margin-right: 10px;
+    padding-right: 25px;
+}
+.NavRoutes a {
+    color: #c95460;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 3vh;
+}
+.NavUl{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2vh;
+}
+.NavLi a{
+    transition: 1s;
+    align-items: center;
+    justify-content: center;
+}::marker{
+    color: transparent;
+}
+.NavLi a:hover{
+    align-items: center;
+    justify-content: center;
+    background-color: #c95460;
+    color: #f0d16a;
+    padding: 1vh 3vh;
+    border-radius: 2vh;
+}

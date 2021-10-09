@@ -1,0 +1,17 @@
+.Footer{
+    display: flex;
+    background-color:rgba(128, 128, 128, 0.1);
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 1vh;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding-left: 5vh;
+}
+.span{
+    font-weight: 500;
+    color: black;
+    text-shadow:2px 2px 5px yellow;
+}

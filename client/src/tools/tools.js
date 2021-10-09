@@ -124,7 +124,7 @@ export function bodyFormater(inputs, target, dispatch, actions){
         
         case 'name':
             dispatch(setName(value))
-            nameDoggy = value;
+            nameDoggyMin = value;
             //return dispatch(setName(value))()
             break;
 

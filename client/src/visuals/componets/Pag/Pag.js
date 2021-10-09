@@ -1,6 +1,7 @@
 import React from 'react';
 import {selectPag} from '../../../controlers/actions';
 import {useDispatch} from 'react-redux';
+import './Pag.css'
 
 function Pag({pag, pages}) {
     pag=Number(pag);
@@ -31,18 +32,18 @@ function Pag({pag, pages}) {
     }
 
     return (
-        <div>
-            <button disabled={pag===1} onClick={clickPrev} onKeyDown={keyPrev}>{'<'}</button>
+        <div className='PagDiv'>
+            <button className='PagBtn' disabled={pag===1} onClick={clickPrev} onKeyDown={keyPrev}>{'<'}</button>
                 <div>
-                    <span>Page</span>
+                    <span>Page </span>
                         <select value={pag} onChange={changePag} ref={input => input && input.focus()}>
                             {numOfPages.map((elem, index)=>{
                                 return <option key={`pag-${index}`}>{index+1}</option>
                             })}
                         </select>
-                    <span>of {pages}</span>
+                    <span> of {pages}</span>
                 </div>
-            <button disabled={pag===pages} onClick={clickNext} onKeyDown={keyNext}>{'>'}</button>
+            <button className='PagBtn' disabled={pag===pages} onClick={clickNext} onKeyDown={keyNext}>{'>'}</button>
         </div>
     )
 }

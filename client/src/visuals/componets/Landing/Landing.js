@@ -1,7 +1,9 @@
-import './index.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {logged, setDoggys, userState} from '../../../controlers/actions'
-import Img from '../Img/Img';
+import './Landing.css'
+import { FaRegHandPointer } from "react-icons/fa";
+import { BiSearchAlt } from 'react-icons/bi';
 
 function Landing({user}) {
     const dispatch = useDispatch();
@@ -23,15 +25,22 @@ function Landing({user}) {
     const src = 'https://cdn.discordapp.com/attachments/890950417737998397/895695448231247892/Doggy.gif'
 
     return (
-        <section>
-            <img src={src} height='400px' width='400px' alt='landing logo'/>
-            <button className='btn' 
+        <div className='Landing'>
+            <img    src={src} 
+                    height='400px' 
+                    width='400px' 
+                    alt='landing logo'
+                    className='LandingImg'
+                />
+            <div className='LandingBtn' 
                     onClick={handleClick}
                     ref={input => input && input.focus()}
                 >
-                Entrar
-            </button>
-        </section>
+                <p><FaRegHandPointer/></p>
+                <span><BiSearchAlt/></span>
+                Get in 
+            </div>
+        </div>
     )
 }
 

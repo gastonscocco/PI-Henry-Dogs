@@ -1,0 +1,14 @@
+
+.OrderDiv{
+    color: #c95460;
+    font-weight: 500;
+}
+
+.OrderDiv select{
+    width: 33vh;
+    background-color: #f0d16a44;
+    border: 2px solid rgba(128, 128, 128, 0.3);
+    color: #c95460;
+    font-weight: 500;
+    padding-left: 30px;
+}

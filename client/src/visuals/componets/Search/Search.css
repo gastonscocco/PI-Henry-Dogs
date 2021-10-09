@@ -1,0 +1,11 @@
+.SearchDiv{
+    display: flex;
+    flex-direction: column;
+    color: #c95460;
+    font-weight: 600;
+}
+
+.SearchDiv input{
+    background-color: #f0d16a44;
+    border: 2px solid rgba(128, 128, 128, 0.3);
+}

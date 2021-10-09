@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {logged, userState} from '../../../controlers/actions';
+import './userLeave.css'
 
 
 function UserLeave({user}) {
@@ -15,8 +16,10 @@ function UserLeave({user}) {
 
     return (
         <div>
-            <button onClick={handleClick}>
-                Salir
+            <button onClick={handleClick}
+                    className='btn'
+                >
+                Exit
             </button>
         </div>
     )

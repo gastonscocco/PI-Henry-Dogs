@@ -1,6 +1,8 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {orderBy, orderDoggys, orderFiltered} from '../../../controlers/actions';
+import './Order.css'
+
 
 function Order({doggys, isFilter, order}) {
 
@@ -20,19 +22,19 @@ function Order({doggys, isFilter, order}) {
     }   
 
     return (
-        <div>
+        <div className='OrderDiv'>
             <label htmlFor ='order'>Sort by : </label>
             <br/>
             <select name='order' onChange={handleChange}>
-                <optgroup label='name'>
+                <optgroup label='Name'>
                     <option value='nasc'>A-Z</option>
                     <option value='ndes'>Z-A</option>
                 </optgroup>
-                <optgroup label='height'>
+                <optgroup label='Height'>
                     <option value='hasc'>Ascendent</option>
                     <option value='hdes'>Descendent</option>
                 </optgroup>
-                <optgroup label='weight'>
+                <optgroup label='Weight'>
                     <option value='wasc'>Ascendent</option>
                     <option value='wdes'>Descendent</option>
                 </optgroup>
