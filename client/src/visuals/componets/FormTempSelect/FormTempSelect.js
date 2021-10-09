@@ -1,11 +1,13 @@
 import React from 'react'
+import './FormTempSelect.css'
+
 
 function FormTempSelect({temps, clearTemp, emptyTemps, variousTemps}) {
     return (
-        <div>
+        <div className='FormTempsSelectDiv'>
             {variousTemps.length !== 0 && <button onClick={emptyTemps}>Empty Temperaments</button>}
-            {variousTemps.length !== 0 && <p>Click him for remove</p>}
-            <div>
+            {variousTemps.length !== 0 && <p>Click to remove</p>}
+            <div className='ListOfTemps'>
                 {temps.map((elem,index)=>{
                     return <span   key={index}
                             id={`temp-${index}`} 

@@ -18,8 +18,8 @@
 }
 .LogoImg{
     position: relative;
-    top: -18px;
-    left: -10px;
+    top: -12px;
+    left: -5px;
     transition: 1s;
 }.LogoImg:hover{
     cursor: pointer;

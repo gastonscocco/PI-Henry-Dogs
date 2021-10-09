@@ -1,4 +1,6 @@
 import React from 'react'
+import './FormSelect.css'
+
 
 function FormSelect({name, value, max, unit, opt, show, inputChange, error}) {
     const options = max?new Array(max+1).fill(0):null
@@ -10,11 +12,11 @@ function FormSelect({name, value, max, unit, opt, show, inputChange, error}) {
     }
 
     return (
-        <div>
+        <div className='FormSelect'>
             <label  htmlFor={`input-${name}`}
                     className={'labelText-'+error}
-                >{!opt && 'required'} {show}: </label>
-            <div>
+                >{!opt && 'Required'} {show}: </label>
+            <div className='DivSelects'>
                 <select id={`input-${name}`}
                         value={value[0]}
                         name={`${name}Min`}
@@ -39,7 +41,9 @@ function FormSelect({name, value, max, unit, opt, show, inputChange, error}) {
                             })
                         }
                 </select>
-                {` ${unit}`}
+                <div className='DivUnit'>
+                    {` ${unit}`}
+                </div>
             </div>    
         </div>
     )

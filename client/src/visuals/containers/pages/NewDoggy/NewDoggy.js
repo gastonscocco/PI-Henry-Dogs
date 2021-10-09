@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTemps } from '../../../../controlers/actions'
 import FormCreate from '../../../componets/FormCreate/FormCreate';
+import './NewDoggy.css'
 
 
 function NewDoggy() {
@@ -13,11 +14,9 @@ function NewDoggy() {
     }, []);
 
     return (
-        <div>
+        <div className='NewDoggyDiv'>
             <h1>Create your Doggy!</h1>
-            <div>
-                <FormCreate/>
-            </div>
+            <FormCreate/>
         </div>
     )
 }

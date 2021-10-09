@@ -31,8 +31,9 @@ function Doggys() {
     },[])
 
     const showPage = (doggys, pag, isFilter)=>{
-        const init=(pag-1)*9;
-        const end=pag*9;
+        console.log('PAG => '+pag+' TYPE OF => '+typeof pag)
+        const init=pag==1?(pag-1)*8:(pag-1)*10;
+        const end =pag==1?pag*8:pag*10;
         return isFilter.length?isFilter.slice(init, end):doggys.slice(init, end)
     }
 

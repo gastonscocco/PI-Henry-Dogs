@@ -47,10 +47,11 @@ export function validateBody(body, setbody, dispatch){
     const {name, height, weight, lifeSpan} = body;
     const listHeight = height.split(' - ');
     const listWeight = weight.split(' - ');
+    const listLifeSpan = lifeSpan.split(' ');
     const listError = {}
     
 
-    if(!name) listError.name= 'Name is required';
+    
     
     if(!listHeight[0]) {
         listError.height= 'Height min is required';
@@ -68,20 +69,19 @@ export function validateBody(body, setbody, dispatch){
         listError.weight= 'Weight max must be greater than Weight min';
     }
 
-    if(lifeSpan){
-        const listLifeSpan = lifeSpan.split(' ');
-
-        if(!listLifeSpan[0]) {
-            listError.lifeSpan= 'LifeSpan min is required';
-        }else if(!listLifeSpan[2]){
-            listError.lifeSpan= 'LifeSpan max is required';
-        }else if(parseInt(listLifeSpan[0]) > parseInt(listLifeSpan[2])){
-            listError.lifeSpan= 'LifeSpan max must be greater than LifeSpan min';
-        }
-
+    if(!listLifeSpan[0]) {
+        listError.lifeSpan= 'LifeSpan min is required';
+    }else if(!listLifeSpan[2]){
+        listError.lifeSpan= 'LifeSpan max is required';
+    }else if(parseInt(listLifeSpan[0]) > parseInt(listLifeSpan[2])){
+        listError.lifeSpan= 'LifeSpan max must be greater than LifeSpan min';
     }
+
+    if(!name) listError.name= 'Name is required';
+
     console.log('list errors   '+Object.keys(listError))
     if(!Object.keys(listError).length)dispatch(setbody(body));
+
     return listError;
 
 }
@@ -171,7 +171,7 @@ export function bodyFormater(inputs, target, dispatch, actions){
         height: height.join(' - '),
         weight: weight.join(' - ')
     };
-    if (img) {body.img = img}else if(!img){body.img = 'https://cdn.discordapp.com/attachments/890950417737998397/895887865567920129/Dognut.png'};
+    if (img) {body.img = img}else if(!img){body.img = 'https://cdn.discordapp.com/attachments/890950417737998397/896541143284736070/unknown.png'};
     if(lifeSpan.length) body.lifeSpan = `${lifeSpan.join(' - ')} years` ;
     if(selectedTemps.length) body.temperaments = selectedTemps;
     //if(!id)body.id=Math.ceil(Math.random()*100000)

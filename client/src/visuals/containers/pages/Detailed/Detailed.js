@@ -17,7 +17,7 @@ function Detailed(){
         <div className='DetailedPage'>
             <div className='DetailedData'>
                 {name && <Name name={name} id={id} detailed={true}/>}
-                {height?<Info height={height} weight={weight} lifeSpan={lifeSpan} detailed={true}/>:'Without selected Doggy'}
+                {height?<Info height={height} weight={weight} lifeSpan={lifeSpan} detailed={true}/>:<span className='withoutData'>Without selected Doggy</span>}
                 {temperament && <Temperaments temperament={temperament} id={id} detailed={true}/>}
             </div>
             <div className='DetailedImg'>

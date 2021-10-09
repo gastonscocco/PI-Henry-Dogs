@@ -234,7 +234,7 @@ export function setError(payload){
 
 export function doggyUpdate(doggys, newDoggy, order){
     console.log(doggys)
-    if(!newDoggy.img) newDoggy.img = 'https://cdn.discordapp.com/attachments/890950417737998397/895887865567920129/Dognut.png';
+    if(!newDoggy.img) newDoggy.img = 'https://cdn.discordapp.com/attachments/890950417737998397/896541143284736070/unknown.png';
     doggys.push(newDoggy);
     const action = orderDoggys(doggys, order)
     return {

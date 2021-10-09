@@ -1,0 +1,17 @@
+
+.DivFormErrors{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 70vh;
+    bottom: 22vh;
+    padding: 1vh;
+    border-radius: 2vh;
+    font-weight: bold;
+    color: gray;
+    width: 70vh;
+    height: 15vh;
+}

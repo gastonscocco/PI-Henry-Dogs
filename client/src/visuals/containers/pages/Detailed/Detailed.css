@@ -1,5 +1,5 @@
 .DetailedPage{
-    background-color:rgba(128, 128, 128, 0.2);
+    height: 75vh;
     padding-top: 16vh;
     padding-bottom: 6vh;
     display: flex;
@@ -23,4 +23,10 @@
 }
 .DetailedImg img{
     border-radius: 5vh;
+}
+
+.withoutData{
+    color: #c95460;
+    font-weight: 600;
+    font-size: large;
 }

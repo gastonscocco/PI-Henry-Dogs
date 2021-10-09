@@ -1,0 +1,14 @@
+
+.NewDoggyDiv{
+    padding-top: 15vh;
+    padding-bottom: 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.NewDoggyDiv h1{
+    color: #f0d16a;
+    text-shadow: 0.3vh 0.3vh 0.4vh #c95460;
+}

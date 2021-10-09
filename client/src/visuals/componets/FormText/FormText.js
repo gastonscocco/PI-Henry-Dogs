@@ -1,4 +1,6 @@
 import React from 'react'
+import './FormText.css'
+
 
 function FormText({type, name, value, inputChange, opt, show, error}) {
 
@@ -8,11 +10,13 @@ function FormText({type, name, value, inputChange, opt, show, error}) {
         show= mayus.join('')
     }
 
+    const flag = error?'TextDanger':'TextLabel'
+
     return (
-        <div>
+        <div className='FormText'>
             <label  htmlFor={`input-${name}`}
-                    className={'labelText-'+error}
-            >{!opt && 'required'} {show}: </label>
+                    className={flag}
+            >{!opt && 'Required'} {show}: </label>
             <input  id={`input-${name}`}
                     type={type}
                     value={value}

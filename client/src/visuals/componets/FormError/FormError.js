@@ -1,10 +1,13 @@
 import React from 'react'
+import './FormError.css'
+
 
 function FormError({error}) {
+
     return (
-        <div>
-            {error?.map((elem,index)=>{
-                <li key={`error-${index}`}>{elem}</li>
+        <div className='DivFormErrors'>
+            {Object.keys(error).length > 0 && error?.map((elem,index)=>{
+                return elem!==0 && <li key={`error-${index}`}>{elem}</li>
             })}
         </div>
     )

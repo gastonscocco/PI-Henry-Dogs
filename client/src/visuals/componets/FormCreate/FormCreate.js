@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {doggysFiltered, validateBody, bodyFormater} from '../../../tools/Tools';
+import './FormCreate.css'
 
 import {
     cleanFields, setTemps, createDoggy, setBody, setName, 
@@ -84,65 +85,67 @@ function FormCreate() {
         
     }
     return (
-        <div>
-            <div>
-                <FormText   type='text'
-                            name='name'
-                            value={nameDoggy}
-                            inputChange={inputChange}
-                            error={error.name && 'danger'}
-                        />
-                <FormSelect name='height'
-                            value={height}
-                            max={250}
-                            unit='cm'
-                            inputChange={inputChange}
-                            error={error.height && 'danger'}
-                        />
-                <FormSelect name='weight'
-                            value={weight}
-                            max={80}
-                            unit='kg'
-                            inputChange={inputChange}
-                            error={error.weight && 'danger'}
-                        />
-                <FormText   type='text'
-                            name='img'
-                            show='URL'
-                            value={img}
-                            inputChange={inputChange}
-                            opt={true}
-                        />
-                <FormSelect name='lifeSpan'
-                            value={lifeSpan}
-                            max={30}
-                            unit='years'
-                            inputChange={inputChange}
-                            opt={true}
-                            error={error.weight && 'danger'}
-                        />
-                <FormSelectExtra    name='setTemp'
-                                    show={'Temperaments'}
-                                    opt={true}
-                                    takeTemps={takeTemperaments}
-                                    selectedTemps={selectedTemps}
-                                    inputChange={inputChange}
-                        />
-                {selectedTemps.length !== 0 && 
-                <FormTempSelect temps={selectedTemps} 
-                                    clearTemp={clearTemp}
-                                    emptyTemps={emptyTemps}
-                                    variousTemps={selectedTemps}
-                        />
-                }
-
+        <div className='FormCreatePrimaryDiv'>
+            <div className='DivIncludeForms'>
+                <div className='DivsRequired'>
+                    <FormText   type='text'
+                                name='name'
+                                value={nameDoggy}
+                                inputChange={inputChange}
+                                error={error.name && true}
+                            />
+                    <FormSelect name='height'
+                                value={height}
+                                max={250}
+                                unit='Cm'
+                                inputChange={inputChange}
+                                error={error.height && true}
+                            />
+                    <FormSelect name='weight'
+                                value={weight}
+                                max={80}
+                                unit='Kg'
+                                inputChange={inputChange}
+                                error={error.weight && true}
+                            />
+                </div>
+                <div className='DivOptionals'>
+                    <FormText   type='text'
+                                name='img'
+                                show='Doggy Image (URL)'
+                                value={img}
+                                inputChange={inputChange}
+                                opt={true}
+                            />
+                    <FormSelect name='lifeSpan'
+                                value={lifeSpan}
+                                max={30}
+                                unit='Years'
+                                inputChange={inputChange}
+                                error={error.weight && true}
+                            />
+                    <FormSelectExtra    name='setTemp'
+                                        show={'Select Temperament'}
+                                        opt={true}
+                                        takeTemps={takeTemperaments}
+                                        selectedTemps={selectedTemps}
+                                        inputChange={inputChange}
+                            />
+                    {selectedTemps.length !== 0 && 
+                    <FormTempSelect temps={selectedTemps} 
+                                        clearTemp={clearTemp}
+                                        emptyTemps={emptyTemps}
+                                        variousTemps={selectedTemps}
+                            />
+                    }
+                </div>
             </div>
-            {(Object.keys(error).length === 0 && error.error) && (
-                <div>
+            { Object.keys(error).length !== 0 && (
+                <div className='DivErrorForm'>
                     <FormError error={Object.values(error)} />
                 </div>
             )}
-            <div>
+            <div className='BtnsDivCreate'>
                 <button onClick={emptyFields}>Empty all fields</button>
                 <button onClick={createNewDoggy}>Create Doggy!</button>
                 <button onClick={goHome}>Home</button>

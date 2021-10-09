@@ -18,5 +18,5 @@
     display: grid;
     grid-template-areas: "a a";
     gap: 0px;
-    grid-auto-columns: 70vh;
+    grid-auto-columns: 68vh;
 }

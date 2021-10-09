@@ -1,4 +1,6 @@
 import React from 'react'
+import './FormSelectExtra.css'
+
 
 function FormSelectExtra({name, show, opt, takeTemps, selectedTemps, inputChange}) {
 
@@ -13,10 +15,10 @@ function FormSelectExtra({name, show, opt, takeTemps, selectedTemps, inputChange
     }
 
     return (
-        <div>
+        <div className='SelectExtraDiv'>
             <label  htmlFor={`input-${name}`}
-                    className='takeTemps'
-                >{!opt && 'required '}{show} : </label>
+                    className='TakeTemps'
+                >{!opt && 'Required '}{show}</label>
             <select id={`input-${name}`}
                     name={name}
                     value={selectedTemps.length!==0 && selectedTemps[selectedTemps.length-1]}
@@ -30,9 +32,7 @@ function FormSelectExtra({name, show, opt, takeTemps, selectedTemps, inputChange
                             }
                         })
                     }
-                </select>
-            
-
+            </select>
         </div>
     )
 }

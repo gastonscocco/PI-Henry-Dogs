@@ -1,0 +1,43 @@
+
+.FormTempsSelectDiv{
+    background-color: #f0d16a44;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    right: 10vh;
+    top: 30vh;
+    padding: 1vh;
+    overflow-y:scroll;
+    max-height: 45vh;
+    border-radius: 2vh;
+    font-weight: bold;
+    color: gray;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    width: 30vh;
+    height: 30vh;
+}
+
+
+.ListOfTemps{
+    font-weight: 500;
+    color: #c95460;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.FormTempsSelectDiv button{
+    background-color: #f0d16a44;
+    color: #c95460;
+    border: 0px;
+    border-bottom: 2px solid gray;
+    font-weight: bold;
+    border-radius: 2vh;
+    padding: 3px 2vh;
+    transition: 1s;
+}
+.FormTempsSelectDiv button:hover{
+    cursor: pointer;
+    background-color: #f0d16a;
+}

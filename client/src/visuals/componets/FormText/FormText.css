@@ -1,0 +1,28 @@
+
+.FormText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 8vh 2vh;
+}
+
+.TextLabel{
+    color: gray;
+    margin-bottom: 1vh;
+    font-weight: 600;
+}
+
+.TextDanger{
+    color: red;
+}
+
+.FormText input{
+    color: #c95460;
+    font-weight: 600;
+    background-color: #f0d16a44;
+    border: 2px solid rgba(128, 128, 128, 0.3);
+    margin-bottom: 1vh;
+    width: 33vh;
+    height: 3vh;
+}

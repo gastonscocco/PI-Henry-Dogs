@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import styles from './app.module.css';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import NewDoggy from './pages/NewDoggy/NewDoggy';
 import Home from './pages/Home/Home';
@@ -10,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import {userState} from '../../controlers/actions'
 import Failed from './pages/Failed/Failed';
 import Footer from '../componets/Footer/Footer';
+import './App.css';
 
 
 
@@ -29,9 +29,10 @@ function App() {
     const Logout = () => {
         window.localStorage.login = '';
     }
-
+    const appClass = window.localStorage.login?'AllApp':'LandingApp'
     return (
-        <div>
+        <div className={appClass}>
+                {window.localStorage.login && <div className='BackGray'></div>}
                 {/* {!window.localStorage.login && <h1>Doggy Pedia</h1>} */}
                 <Route path='/'>
                     {window.localStorage.login?<Header user={Logout}/>:<Landing user={Joined}/>}
