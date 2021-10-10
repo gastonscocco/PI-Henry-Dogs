@@ -146,7 +146,7 @@ function FormCreate() {
                 </div>
             )}
             <div className='BtnsDivCreate'>
-                <button onClick={emptyFields}>Empty all fields</button>
+                <button onClick={emptyFields}>Delete all fields</button>
                 <button disabled={nameDoggy.length<1 || Object.keys(error).length?true:false} onClick={createNewDoggy}>Create Doggy!</button>
                 <button onClick={goHome}>Home</button>
             </div>

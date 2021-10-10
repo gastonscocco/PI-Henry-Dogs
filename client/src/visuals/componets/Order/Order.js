@@ -16,7 +16,6 @@ function Order({doggys, isFilter, order}) {
         if(e.target.value[0]==='w')sortBy=['weight', e.target.value.substring(1,e.target.value.length)];
         // if(e.target.value[0]==='o')sortBy=['origin', e.target.value.substring(1,e.target.value.length)];
 
-        console.log(sortBy)
         dispatch(orderBy(sortBy))
         isFilter.length && dispatch(orderFiltered(isFilter, sortBy))
         dispatch(orderDoggys(doggys, sortBy))
