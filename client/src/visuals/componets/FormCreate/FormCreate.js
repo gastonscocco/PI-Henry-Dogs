@@ -38,7 +38,7 @@ function FormCreate() {
     const takeTemperaments = useSelector(state=>state.takeTemperaments)
     const selectedTemps = useSelector(state=>state.selectedTemps)
 
-    
+
     useEffect(() => {
         if(newDoggy.id){
             dispatch(setDoggy(newDoggy.id));
@@ -66,8 +66,6 @@ function FormCreate() {
     const createNewDoggy=()=>{
         validateBody(body, setBody, dispatch)
         dispatch(createDoggy(body))
-        //dispatch(cleanNew())
-        //setTimeout(dispatch(cleanNew()),1000)
     }
 
     const clearTemp= event=>{
@@ -84,6 +82,8 @@ function FormCreate() {
         window.location.href='http://localhost:3000/home'
         
     }
+
+
     return (
         <div className='FormCreatePrimaryDiv'>
             <div className='DivIncludeForms'>
@@ -122,7 +122,7 @@ function FormCreate() {
                                 max={30}
                                 unit='Years'
                                 inputChange={inputChange}
-                                error={error.weight && true}
+                                error={error.lifeSpan && true}
                             />
                     <FormSelectExtra    name='setTemp'
                                         show={'Select Temperament'}
@@ -147,7 +147,7 @@ function FormCreate() {
             )}
             <div className='BtnsDivCreate'>
                 <button onClick={emptyFields}>Empty all fields</button>
-                <button onClick={createNewDoggy}>Create Doggy!</button>
+                <button disabled={nameDoggy.length<1 || Object.keys(error).length?true:false} onClick={createNewDoggy}>Create Doggy!</button>
                 <button onClick={goHome}>Home</button>
             </div>
         </div>

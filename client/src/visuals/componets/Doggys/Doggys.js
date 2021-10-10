@@ -7,12 +7,16 @@ import Filter from '../Filter/Filter';
 import {setDoggys, setTemps} from '../../../controlers/actions'
 import Search from '../Search/Search';
 import './Doggys.css'
+import CreatedDoggy from '../CreatedDoggy/CreatedDoggy';
+import Loading from '../Loading/Loading';
 
 function Doggys() {
 
     const dispatch = useDispatch()
 
     const doggys=useSelector(state=>state.doggys);
+    const fromBy=useSelector(state=>state.fromBy);
+    const doggysFromDb = useSelector(state=>state.doggysFromDb)
     const pag=useSelector(state=>state.pag);
     const filter=useSelector(state=>state.filter);
     const isFilter=useSelector(state=>state.isFilter);
@@ -31,27 +35,31 @@ function Doggys() {
     },[])
 
     const showPage = (doggys, pag, isFilter)=>{
-        console.log('PAG => '+pag+' TYPE OF => '+typeof pag)
         const init=pag==1?(pag-1)*8:(pag-1)*10;
         const end =pag==1?pag*8:pag*10;
         return isFilter.length?isFilter.slice(init, end):doggys.slice(init, end)
     }
 
-    return (
-        <div className='PrimaryDiv'>
+    return !doggys.length?
+        (<div>
+            <Loading/>
+        </div>)
+        :
+        (<div className='PrimaryDiv'>
             <div className='Btns'>
                 <Search/>
+                {showOrder && <CreatedDoggy/>}
                 {showOrder && <Order doggys={doggys} isFilter={isFilter} order={order}/>}
                 {showFilter && <Filter doggys={doggys} filter={filter}/>}
                 {((!numOfFilterPages&&numOfPages>1) || numOfFilterPages>1) 
-                && <Pag pag={pag} pages={numOfFilterPages || numOfPages}/>
-                /*default pag = 1 , this code show pag selected or filter pag selected*/ }
+                && <Pag pag={pag} pages={numOfFilterPages || numOfPages}/>}
+                
             </div>
             <div className='Doggys'>
-                {showPage(doggys, pag, isFilter).map((doggy,index)=>{
+                {showPage((fromBy?doggys:doggysFromDb), pag, isFilter).map((doggy,index)=>{
                     return <Dog doggy={doggy} key={index}/>
                 })}
-                </div>
+            </div>
         </div>
     )
 }

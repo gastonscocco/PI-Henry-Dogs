@@ -28,7 +28,7 @@ function apiSend(elem){
         weight: elem.weight.metric,
         lifeSpan: elem.life_span,
         img: elem.image.url,
-        temperament: elem.temperament
+        temperament: elem.temperament,
     }
 };
 

@@ -50,7 +50,7 @@ export function validateBody(body, setbody, dispatch){
     const listLifeSpan = lifeSpan.split(' ');
     const listError = {}
     
-
+    if(!isNaN(Number(name))) listError.name= 'Name is a Number'
     
     
     if(!listHeight[0]) {

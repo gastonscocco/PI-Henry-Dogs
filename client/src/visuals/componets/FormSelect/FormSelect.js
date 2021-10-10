@@ -11,10 +11,12 @@ function FormSelect({name, value, max, unit, opt, show, inputChange, error}) {
         show= mayus.join('')
     }
 
+    const flag = error?'TextDanger':'TextLabel'
+
     return (
         <div className='FormSelect'>
             <label  htmlFor={`input-${name}`}
-                    className={'labelText-'+error}
+                    className={flag}
                 >{!opt && 'Required'} {show}: </label>
             <div className='DivSelects'>
                 <select id={`input-${name}`}

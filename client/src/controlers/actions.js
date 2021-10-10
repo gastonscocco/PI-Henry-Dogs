@@ -34,6 +34,8 @@ export const SETSELECTTEMPS = 'SETSELECTTEMPS';
 export const SETBODY = 'SETBODY';
 export const CLEANFIELDS = 'CLEANFIELDS';
 export const CREATEDOGGY = 'CREATEDOGGY';
+export const FILTERID = 'FILTERID';
+export const CLEANDOG = 'CLEANDOG';
 
 
 export function userState(payload){
@@ -76,6 +78,14 @@ export function orderDoggys(doggys, order){
         doggys.sort((a,b)=>{
             const category = order[0];
             const direction = order[1];
+
+            // if(category==='origin'){
+            //     if(!isNaN(Number(a.id))) return 1
+            //     if(isNaN(Number(a.id))) return -1
+            //     return 0
+            // }
+
+
 
             if(category==='name'){
                 if(a[category]>b[category]) return direction==='asc'?1:-1
@@ -233,7 +243,6 @@ export function setError(payload){
 }
 
 export function doggyUpdate(doggys, newDoggy, order){
-    console.log(doggys)
     if(!newDoggy.img) newDoggy.img = 'https://cdn.discordapp.com/attachments/890950417737998397/896541143284736070/unknown.png';
     doggys.push(newDoggy);
     const action = orderDoggys(doggys, order)
@@ -296,5 +305,26 @@ export function createDoggy(body){
         }catch(e){
             console.log(e)
         }
+    }
+}
+
+export function filterId(doggys, value){
+        let doggysFilterById
+    if(value==='DB'){
+        doggysFilterById = doggys.filter(elem=>typeof elem.id==='string')
+
+    }else if(value==='Api'){
+        doggysFilterById = doggys.filter(elem=>typeof elem.id==='number')
+    }
+    console.log(doggysFilterById)
+    return {
+        type:FILTERID,
+        payload:doggysFilterById
+    }
+}
+
+export function cleanDog(){
+    return {
+        type: CLEANDOG
     }
 }

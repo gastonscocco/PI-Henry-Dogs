@@ -91,7 +91,7 @@ Crea una raza de perro en la base de datos
 */
 router.post('/', validate, async (req,res,next)=>{
     try{
-        const {name, height, weight, lifeSpan, img, temperaments} = req.body;
+        const {name, height, weight, lifeSpan, img, temperaments, origin} = req.body;
         const response = axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`);
         const newDoggy = response.data;
 
@@ -99,7 +99,7 @@ router.post('/', validate, async (req,res,next)=>{
             return res.status(404).json({error: 'That doggy is aready exists' });
         }
         const doggy = await Dog.create({
-            name, height, weight, lifeSpan, img, 
+            name, height, weight, lifeSpan, img, origin
         })
 
         if(temperaments){

@@ -13,9 +13,10 @@ function Order({doggys, isFilter, order}) {
 
         if(e.target.value[0]==='n')sortBy=['name', e.target.value.substring(1,e.target.value.length)];
         if(e.target.value[0]==='h')sortBy=['height', e.target.value.substring(1,e.target.value.length)];
-        if(e.target.value[0]==='w')sortBy=['weight', e.target.value.substring(1,e.target.value.length)]
+        if(e.target.value[0]==='w')sortBy=['weight', e.target.value.substring(1,e.target.value.length)];
+        // if(e.target.value[0]==='o')sortBy=['origin', e.target.value.substring(1,e.target.value.length)];
 
-        //console.log(sortBy)
+        console.log(sortBy)
         dispatch(orderBy(sortBy))
         isFilter.length && dispatch(orderFiltered(isFilter, sortBy))
         dispatch(orderDoggys(doggys, sortBy))
@@ -38,6 +39,10 @@ function Order({doggys, isFilter, order}) {
                     <option value='wasc'>Ascendent</option>
                     <option value='wdes'>Descendent</option>
                 </optgroup>
+                {/* <optgroup label='Origin'>
+                    <option value='oasc'>Created</option>
+                    <option value='odes'>Api</option>
+                </optgroup> */}
             </select>
         </div>
     )

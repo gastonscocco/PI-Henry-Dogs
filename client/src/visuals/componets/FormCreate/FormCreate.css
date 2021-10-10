@@ -38,6 +38,10 @@
     border: 2px solid rgba(128, 128, 128, 0.9);
     box-shadow: 1px 1px 4px gray;
     cursor: pointer;
+}.BtnsDivCreate button:disabled{
+    background-color:transparent;
+    color: transparent;
+    border: transparent;
 }
 
 /* 

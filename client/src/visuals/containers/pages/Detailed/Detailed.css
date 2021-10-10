@@ -30,3 +30,20 @@
     font-weight: 600;
     font-size: large;
 }
+
+.DetailedPage button{
+    background-color: #f0d16a81;
+    padding: 1vh;
+    border-radius: 2vh;
+    color: #c95460;
+    font-weight: bold;
+    position: fixed;
+    top: 18vh;
+    right: 10vh;
+    border: 2px solid rgba(128, 128, 128, 0.308);
+    transition: 1s;
+}
+.DetailedPage button:hover{
+    cursor: pointer;
+    background-color: #f0d16a;
+}

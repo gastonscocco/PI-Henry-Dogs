@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch,useSelector } from 'react-redux';
+import { setName } from '../../../controlers/actions';
 import './FormText.css'
 
-
 function FormText({type, name, value, inputChange, opt, show, error}) {
+    const dispatch = useDispatch()
+    const nameDoggy= useSelector(state=>state.name)
 
     if(name &&!show){
         const mayus=name.split('')
         mayus[0] = mayus[0].toUpperCase();
         show= mayus.join('')
     }
+
+    useEffect(() => {
+        dispatch(setName(nameDoggy))
+    }, [nameDoggy.length>0])
 
     const flag = error?'TextDanger':'TextLabel'
 

@@ -50,6 +50,9 @@ function App() {
                 <Route path='/detailed'>
                     {window.localStorage.login?<Detailed/>:<Redirect to='/'/>}
                 </Route>
+                {/* <Route path='/detailed/:id'
+                    render={({match})=>window.localStorage.login?<Detailed match={match}/>:<Redirect to='/'/>}
+                /> */}
                 <Route exact path='/404'>
                     {window.localStorage.login?<Failed/>:<Redirect to='/'/>}
                 </Route>

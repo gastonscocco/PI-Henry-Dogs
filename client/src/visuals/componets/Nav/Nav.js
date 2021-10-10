@@ -33,7 +33,7 @@ function Nav({user}) {
                         <NavLink to='/newdoggy'>New Doggy</NavLink>
                     </li>
                     <li className='NavLi'>
-                        <NavLink to='/detailed'>Details</NavLink>
+                        <NavLink to='/detailed/'>Details</NavLink>
                     </li>
                 </ul>
                 <UserLeave user={user}/>

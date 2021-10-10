@@ -1,17 +1,39 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import {logged, setDoggys, userState} from '../../../controlers/actions'
+import {logged, setDoggy, setDoggys, setTemps, userState} from '../../../controlers/actions'
 import './Landing.css'
 import { FaRegHandPointer } from "react-icons/fa";
 import { BiSearchAlt } from 'react-icons/bi';
+import { useEffect } from 'react';
 
 function Landing({user}) {
     const dispatch = useDispatch();
     const order = useSelector(state=>state.order)
+    const doggys = useSelector(state=>state.doggys)
 
     const reload=()=>{
         return window.location.reload(true)
     }
+
+    // if(!doggys.length){
+    //     dispatch(setTemps())
+    //     dispatch(setDoggys(undefined, order))
+    //     setTimeout(500)
+    //     const json = JSON.stringify(doggys)
+    //     localStorage.setItem("doggys", json);
+    // }
+
+    // useEffect(()=>{
+    //     if(!doggys.length){
+    //         dispatch(setTemps())
+    //         dispatch(setDoggys(undefined, order))
+    //     }
+    // },[])
+    
+    // useEffect(() => {
+    //     const json = JSON.stringify(doggys)
+    //     localStorage.setItem("doggys", json);
+    // }, [doggys])
 
     const handleClick =()=>{
         user();

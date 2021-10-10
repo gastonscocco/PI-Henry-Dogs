@@ -1,7 +1,7 @@
 
 import { 
-        CHANGEFILTER, CHANGEORDER, CLEANDOGGYS, CLEANFIELDS, CLEANNEW, CLEANSEARCH, 
-        CREATEDOGGY, DOGGYUPDATE, LOGGED, ORDERBY, ORDERDOGGYS, ORDERFILTERED, SEARCHDOGGYS, 
+        CHANGEFILTER, CHANGEORDER, CLEANDOG, CLEANDOGGYS, CLEANFIELDS, CLEANNEW, CLEANSEARCH, 
+        CREATEDOGGY, DOGGYUPDATE, FILTERID, LOGGED, ORDERBY, ORDERDOGGYS, ORDERFILTERED, SEARCHDOGGYS, 
         SELECTPAG,SETBODY,SETDOGGY, SETDOGGYS, SETERROR, SETFILTER, SETFILTERED, 
         SETHEIGHT, SETIMG, SETLIFESPAN, SETNAME, SETORDER, 
         SETSELECTTEMPS, 
@@ -13,6 +13,8 @@ const initialState={
     userLog:'',
     logged:false,
     doggys:[],
+    doggysFromDb:[],
+    fromBy:true,
     doggy:{},
     pag:1,
     search:'',
@@ -26,7 +28,7 @@ const initialState={
     img:'', selectedTemps:[],
     newDoggy:{},
     body:{},
-    error:{error:0}
+    error:{error:0},
 }
 
 function reducer(state=initialState, {type, payload}){
@@ -153,6 +155,16 @@ function reducer(state=initialState, {type, payload}){
 
         case CLEANNEW:
             return {...state, newDoggy:{}}
+
+        case FILTERID:
+            return {
+                ...state, 
+                doggysFromDb: payload,
+                fromBy: !state.fromBy
+            }
+
+        case CLEANDOG:
+            return {...state, doggy:{}}
 
         default:
             return state

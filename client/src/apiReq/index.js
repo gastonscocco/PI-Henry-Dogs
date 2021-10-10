@@ -46,8 +46,7 @@ export function getTemperaments(){
 
 export function getDoggys(name){
         let path = name?`${doggyApi}?name=${name}`:doggyApi;
-        console.log('NAME => '+name)
-        console.log('PATH => '+path)
+        
         return(async()=>{
             let doggys = await axiosCall(path);
             if(doggys.status===404){
@@ -97,7 +96,7 @@ export function getDoggy(id){
                 doggy.weight = [20, 30];
                 return doggy;
             }
-            if(!doggy.img) doggy.img = 'https://cdn.discordapp.com/attachments/890950417737998397/895887865567920129/Dognut.png';
+            // if(!doggy.img) doggy.img = 'https://cdn.discordapp.com/attachments/890950417737998397/895887865567920129/Dognut.png';
             return doggy
         })(path);
     }

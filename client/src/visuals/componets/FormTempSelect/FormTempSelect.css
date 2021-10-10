@@ -18,13 +18,14 @@
     height: 30vh;
 }
 
-
 .ListOfTemps{
     font-weight: 500;
     color: #c95460;
     display: flex;
     flex-direction: column;
     align-items: center;
+}.ListOfTemps:hover{
+    cursor: pointer;
 }
 
 .FormTempsSelectDiv button{
@@ -40,4 +41,26 @@
 .FormTempsSelectDiv button:hover{
     cursor: pointer;
     background-color: #f0d16a;
+}
+.FormTempsSelectDiv::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}.FormTempsSelectDiv::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.FormTempsSelectDiv::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.FormTempsSelectDiv::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+.FormTempsSelectDiv::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+.FormTempsSelectDiv::-webkit-scrollbar-track:hover,
+.FormTempsSelectDiv::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
 }

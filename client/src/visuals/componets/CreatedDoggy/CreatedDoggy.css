@@ -1,12 +1,12 @@
 
-.FilterDiv{
-    color: #c95460;
+.CreatedCategoryDiv{
     display: flex;
     flex-direction: column;
-    font-weight: 500;
+    color: #c95460;
+    font-weight: 600;
 }
 
-.FilterDiv select{
+.CreatedCategoryDiv select{
     width: 33vh;
     background-color: #f0d16a44;
     border: 2px solid rgba(128, 128, 128, 0.3);

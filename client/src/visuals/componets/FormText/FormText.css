@@ -15,10 +15,11 @@
 
 .TextDanger{
     color: red;
+    font-weight: 600;
 }
 
 .FormText input{
-    color: #c95460;
+    color: gray;
     font-weight: 600;
     background-color: #f0d16a44;
     border: 2px solid rgba(128, 128, 128, 0.3);

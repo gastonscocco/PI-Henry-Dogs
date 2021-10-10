@@ -1,0 +1,12 @@
+
+.LoadingDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.LoadingDiv img{
+    position: relative;
+    width: 60vh;
+    top: 10vh;
+}
