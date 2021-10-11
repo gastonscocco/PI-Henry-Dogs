@@ -1,6 +1,5 @@
 .Footer{
     display: flex;
-    background-color:rgba(128, 128, 128, 0.1);
     align-items: center;
     justify-content: flex-start;
     padding-bottom: 1vh;
@@ -11,7 +10,14 @@
     padding-left: 5vh;
 }
 .span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 500;
+    color: gray;
+}
+.span p{
+    margin: 0px 6px 0px 3px;
     color: black;
     text-shadow:2px 2px 5px yellow;
 }
