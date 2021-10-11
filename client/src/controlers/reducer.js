@@ -18,7 +18,7 @@ const initialState={
     doggy:{},
     pag:1,
     search:'',
-    filter:'All',
+    filter:'all',
     isFilter:[],
     showFilter:false,
     showOrder:false,
@@ -35,7 +35,7 @@ function reducer(state=initialState, {type, payload}){
     switch (type) {
         
         case SETDOGGYS:
-            return {...state, pag:1, filter:'All', isFilter:[] , doggys: payload}
+            return {...state, pag:1, filter:'all', isFilter:[] , doggys: payload}
 
         case USERSTATE:
             return {...state, userLog:payload};
