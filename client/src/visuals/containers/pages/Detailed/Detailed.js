@@ -16,7 +16,7 @@ function Detailed({match}){
     const {id, name, img, temperament, height, weight, lifeSpan} = doggy;
     const logo = 'https://cdn.discordapp.com/attachments/890950417737998397/895771750325972992/Doggy.png'
 
-    //const history=useHistory()
+    const history=useHistory()
     
     useEffect(() => {
         if(doggy){
@@ -37,6 +37,19 @@ function Detailed({match}){
             dispatch(cleanDog())
         }
     }
+
+
+    if(match){
+        const matchId=match.params.id;
+        dispatch(setDoggy(matchId))
+        history.push(`/detailed`)
+    }   
+
+
+
+    // if(!window.location.pathname!=='http://localhost:3000/newdoggy'){
+    //     window.location.href='http://localhost:3000/404'
+    // }
     
     return (
         <div className='DetailedPage'>

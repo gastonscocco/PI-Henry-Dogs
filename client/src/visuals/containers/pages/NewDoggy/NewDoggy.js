@@ -13,6 +13,10 @@ function NewDoggy() {
         dispatch(setTemps())
     }, []);
 
+    // if(!window.location.pathname!=='http://localhost:3000/newdoggy'){
+    //     window.location.href='http://localhost:3000/404'
+    // }
+
     return (
         <div className='NewDoggyDiv'>
             <h1>Create your Doggy!</h1>

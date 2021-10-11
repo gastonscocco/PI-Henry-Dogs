@@ -50,11 +50,11 @@ export function getDoggys(name){
         return(async()=>{
             let doggys = await axiosCall(path);
             if(doggys.status===404){
-                window.location.href='http://localhost:3000/404'
-                // return doggys=[{
-                //     name: 'We cant find that Doggy',
-                //     img: (imgDog1||imgDog2||imgDog3||imgDog4)
-                // }];
+                //window.location.href='http://localhost:3000/404'
+                return doggys=[{
+                    name: 'We cant find that Doggy',
+                    img: 'https://cdn.discordapp.com/attachments/890950417737998397/897161641806921738/unknown.png'
+                }];
             }else if(doggys.status!==404 && doggys[0]!=='We cant find that Doggy'){
                 doggys.map(dog=>{
                     if (dog.name === 'Smooth Fox Terrier') {

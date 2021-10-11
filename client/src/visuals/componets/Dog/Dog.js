@@ -15,7 +15,7 @@ function Dog({doggy}) {
 
 
     const handleClick= ()=>{
-        const json = JSON.stringify(doggy)
+        const json = JSON.stringify({})
         localStorage.setItem("doggy", json);
         if(name === 'without data :c')return;
         history.push(`/detailed`)

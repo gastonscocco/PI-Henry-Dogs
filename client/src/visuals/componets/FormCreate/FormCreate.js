@@ -47,7 +47,7 @@ function FormCreate() {
             if(isFilter.length){
                 doggysFiltered(dispatch, undefined, undefined, doggys, filter, true, updateIsFilter)
             }
-            history.push('/newdoggy');
+            history.push('/detailed');
         }
     }, [newDoggy])
 

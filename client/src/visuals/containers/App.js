@@ -30,6 +30,19 @@ function App() {
         window.localStorage.login = '';
     }
     const appClass = window.localStorage.login?'AllApp':'LandingApp'
+    
+
+    // if(window.localStorage.login && !window.location.pathname.includes('home'||'newdoggy'||'detailed')){
+    //     console.log('DENTRO DE REDIRECT')
+    //     if(!window.location.pathname.includes('404')){
+    //         window.location.href='http://localhost:3000/404'
+    //     }else{
+    //         if(window.location.pathname.includes('hom')){
+    //             window.location.href('http://localhost:3000/home')
+    //         }
+    //     }
+    // }
+
     return (
         <div className={appClass}>
                 {window.localStorage.login && <div className='BackGray'></div>}
@@ -47,12 +60,12 @@ function App() {
                 <Route path='/newdoggy'>
                     {window.localStorage.login?<NewDoggy/>:<Redirect to='/'/>}
                 </Route>
-                <Route path='/detailed'>
+                <Route exact path='/detailed'>
                     {window.localStorage.login?<Detailed/>:<Redirect to='/'/>}
                 </Route>
-                {/* <Route path='/detailed/:id'
+                <Route path='/detailed/:id'
                     render={({match})=>window.localStorage.login?<Detailed match={match}/>:<Redirect to='/'/>}
-                /> */}
+                />
                 <Route exact path='/404'>
                     {window.localStorage.login?<Failed/>:<Redirect to='/'/>}
                 </Route>

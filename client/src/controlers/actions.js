@@ -170,10 +170,15 @@ export function setDoggy(id){
     return async dispatch=>{
         try {
             const dog = await getDoggy(id);
-            dispatch({
-                type: SETDOGGY,
-                payload: dog
-            })
+            const json = JSON.stringify(dog)
+            if(json.length<2000){
+                localStorage.setItem("doggy", json);
+                dispatch({
+                    type: SETDOGGY,
+                    payload: dog
+                })
+            }
+            
         }catch(e){
             console.log(e)
         }
@@ -324,6 +329,8 @@ export function filterId(doggys, value){
 }
 
 export function cleanDog(){
+    const json = JSON.stringify({})
+    localStorage.setItem("doggy", json);
     return {
         type: CLEANDOG
     }
